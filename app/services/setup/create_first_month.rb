@@ -1,4 +1,4 @@
-class InitialSetup::CreateFirstMonth
+class Setup::CreateNextMonth
 	require "active_support"
 
 	attr_reader :user
