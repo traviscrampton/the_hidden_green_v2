@@ -36,7 +36,6 @@ RSpec.describe Months::GenerateMonth do
 		it "returns a hash with a cashflow object etc" do
 			returned_hash = service.call
 			expect(returned_hash[:month]).to eq(month)
-			binding.pry
 			expect(returned_hash[:cash_flow].class).to eq(CashFlow)
 		end
 	end

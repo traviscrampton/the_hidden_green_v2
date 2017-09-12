@@ -9,7 +9,8 @@ class Months::GenerateMonth
 
 	def call
 		create_finances_for_new_month
-		return {month: month, cash_flow: create_cash_flow_for_new_month}
+		cash_flow = create_cash_flow_for_new_month
+		return {month: month, cash_flow: cash_flow}
 	end
 
 	def create_cash_flow_for_new_month
@@ -59,8 +60,4 @@ class Months::GenerateMonth
 			month.debts.create(debt_attrs)
 		end
 	end
-
-
-
-
 end
