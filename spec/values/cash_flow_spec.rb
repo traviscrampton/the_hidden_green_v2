@@ -6,14 +6,14 @@ RSpec.describe CashFlow do
 		let(:user) { create(:user) }
 		let(:income) { create(:income, amount: 4000.00, incomeable_id: user.id, incomeable_type: user.class.name)}
 		let(:spending) { create(:spending, amount: 2000.00, spendable_id: user.id, spendable_type: user.class.name)}
-		let(:cash_flow) { CashFlow.new(income: income, spending: spending) }
+		let(:cash_flow) { CashFlow.new(income: income, spending: spending, total_min_payments: 200.00) }
 
 		before(:each) do
 			cash_flow
 		end
 
 		it "calculates a positive cashflow" do
-			expect(cash_flow.amount).to eq(2000.00)
+			expect(cash_flow.amount).to eq(1800.00)
 		end
 	end
 
@@ -21,7 +21,7 @@ RSpec.describe CashFlow do
 		let(:user) { create(:user) }
 		let(:income) { create(:income, amount: 2000.00, incomeable_id: user.id, incomeable_type: user.class.name)}
 		let(:spending) { create(:spending, amount: 4000.00, spendable_type:user.class.name, spendable_id: user.id)}
-		let(:cash_flow) { CashFlow.new(income: income, spending: spending)}
+		let(:cash_flow) { CashFlow.new(income: income, spending: spending, total_min_payments: 100.00)}
 
 		before(:each) do
 			cash_flow

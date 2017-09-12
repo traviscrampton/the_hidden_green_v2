@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
 	has_one :income, as: :incomeable
 	has_one :spending, as: :spendable
-	has_one :saving, as: :savingable 
+	has_one :saving, as: :savingable
 	has_many :debts, as: :debtable
 	has_many :months
+
 end
