@@ -1,10 +1,10 @@
 require "rails_helper"
 require "active_support"
 
-RSpec.describe Setup::CreateNextMonth do
+RSpec.describe Months::CreateMonthDate do
 	context "user to create first month" do
 		let(:user) { create(:user) }
-		let(:service) { InitialSetup::CreateFirstMonth.new(user: user) }
+		let(:service) { Months::CreateMonthDate.new(user: user) }
 
 
 		before(:each) do

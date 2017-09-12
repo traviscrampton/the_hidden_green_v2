@@ -1,4 +1,4 @@
-class Months::GenerateMonthRecommendations
+class Months::GenerateMonth
 
 	attr_reader :previous_finance, :month
 
@@ -9,15 +9,14 @@ class Months::GenerateMonthRecommendations
 
 	def call
 		create_finances_for_new_month
-		create_cash_flow_for_new_month
+		return {month: month, cash_flow: create_cash_flow_for_new_month}
 	end
 
 	def create_cash_flow_for_new_month
-		CashFlow.new(income: month.income, spending: spending.amount, total_min_payments: total_minimum_payment)
+		CashFlow.new(income: month.income, spending: month.spending, total_min_payments: total_minimum_payment)
 	end
 
 	def create_finances_for_new_month
-		## just do this manually for now
 		create_income
 		create_saving
 		create_spending

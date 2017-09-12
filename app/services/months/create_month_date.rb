@@ -1,4 +1,4 @@
-class Setup::CreateNextMonth
+class Months::CreateMonthDate
 	require "active_support"
 
 	attr_reader :user
