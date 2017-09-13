@@ -1,6 +1,8 @@
 class Debt < ActiveRecord::Base
 	belongs_to :debtable, polymorphic: true
 
+	has_many :goals, as: :goalable
+
 
 	def subtract_min_payment
 		subtracted = minimum_payment <= amount ? minimum_payment : amount

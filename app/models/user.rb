@@ -9,5 +9,4 @@ class User < ApplicationRecord
 	has_one :saving, as: :savingable
 	has_many :debts, as: :debtable
 	has_many :months
-
 end

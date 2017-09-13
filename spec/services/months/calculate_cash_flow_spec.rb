@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Months::CalculateCashFlow do
 		context "Generating a new months finances off of a user initial state" do
 			let(:user) { create(:user)}
-			let(:month) { create(:month, user_id: user.id, name:'Test Month')}
+			let(:month) { create(:month, user_id: user.id)}
 			let(:income) { create(:income, incomeable_id: month.id, incomeable_type: month.class.name, amount: 2500.00, name:'The Hidden Green')}
 			let(:debt) { create(:debt, debtable_id: month.id, debtable_type: month.class.name, amount: 15000.00, minimum_payment: 100.00, interest_rate: 0.04, name: 'Student Loan')}
 			let(:saving) { create(:saving, savingable_id: month.id, savingable_type: month.class.name, amount: 4000.00)}
