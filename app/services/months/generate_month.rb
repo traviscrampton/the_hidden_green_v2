@@ -7,35 +7,12 @@ class Months::GenerateMonth
 		@month = args[:month]
 	end
 
-	def call
-		create_finances_for_new_month
-		cash_flow = create_cash_flow_for_new_month
-		return {month: month, cash_flow: cash_flow}
-	end
-
-	def create_cash_flow_for_new_month
-		CashFlow.new(income: month.income, spending: month.spending, total_min_payments: total_minimum_payment)
-	end
-
 	def create_finances_for_new_month
 		create_income
 		create_saving
 		create_spending
 		create_debts
 	end
-
-	def total_minimum_payment
-		total_min_payments = 0
-		month.debts.each do |debt|
-			total_min_payments += debt.subtract_min_payment
-		end
-		total_min_payments
-	end
-
-	# what I want this to do:
-	# 1. First create the new debt, savings, account, etc based off the last previous_finance month/user
-	# 2. take out the minimum payment of all the debts and add that to the cash flow
-	# 3. Return next month to be ready to go.
 
 	private
 

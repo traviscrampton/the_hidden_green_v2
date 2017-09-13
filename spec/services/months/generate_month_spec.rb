@@ -26,17 +26,17 @@ RSpec.describe Months::GenerateMonth do
 			expect(month.debts.first.amount).to eq(user.debts.first.amount)
 		end
 
-		it "properly updates the debt minimum payment" do
-			service.create_finances_for_new_month
-			total_min_payment = service.total_minimum_payment
-			expect(total_min_payment).to eq(100.0)
-			expect(month.debts.first.amount).to eq(14900.00)
-		end
-
-		it "returns a hash with a cashflow object etc" do
-			returned_hash = service.call
-			expect(returned_hash[:month]).to eq(month)
-			expect(returned_hash[:cash_flow].class).to eq(CashFlow)
-		end
+		# it "properly updates the debt minimum payment" do
+		# 	service.create_finances_for_new_month
+		# 	total_min_payment = service.total_minimum_payment
+		# 	expect(total_min_payment).to eq(100.0)
+		# 	expect(month.debts.first.amount).to eq(14900.00)
+		# end
+		#
+		# it "returns a hash with a cashflow object etc" do
+		# 	returned_hash = service.call
+		# 	expect(returned_hash[:month]).to eq(month)
+		# 	expect(returned_hash[:cash_flow].class).to eq(CashFlow)
+		# end
 	end
 end
