@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911181943) do
+ActiveRecord::Schema.define(version: 20170913194236) do
 
   create_table "debts", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20170911181943) do
     t.float    "minimum_payment"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.integer "goalable_id"
+    t.string  "goalable_type"
+    t.float   "amount"
   end
 
   create_table "incomes", force: :cascade do |t|
@@ -34,11 +40,9 @@ ActiveRecord::Schema.define(version: 20170911181943) do
 
   create_table "months", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.integer  "sequence_num"
     t.datetime "date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "savings", force: :cascade do |t|
