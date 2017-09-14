@@ -1,10 +1,20 @@
+		.login__block{
 
+			width: 250px;
+			&--title{
+				font-size: 20px;
+				margin: 25px 0px;
+			}
+		}
 		.signup__block--container{
 			background: #f9f9f9;
 			border: 2px solid #f1f1f1;
 			padding: 36px;
 			min-height: 290px;
 			border-radius: 6px;
+		}
+		.reset{
+			min-height:100px
 		}
 		.signup__block--input{
 			margin-bottom: 25px;
@@ -38,10 +48,9 @@
 		}
 		.signup__block--login_cta{
 			padding-top:17px;
-			a{
-				color: #82CA9C;
-			}
-			a:visited{
-				color: darken(#82CA9C, 20%)
-			}
+		}
+
+		.signup__block--input--forgot{
+			float:right;
+			font-size:12px;
 		}
