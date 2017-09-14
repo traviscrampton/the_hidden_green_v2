@@ -1,12 +1,14 @@
 #home{
+	color: #586069;
 	text-align: center;
-	padding: 10%;
+	padding: 10% 15%;
 	.information__block, .signup__block{
-		width: 45%;
 		display: inline-block;
 		overflow: none;
 	}
 	.information__block{
+		width: 55%;
+		float:left;
 		text-align: left;
 		font-weight: 300;
 		&--logo, &--header{
@@ -21,5 +23,9 @@
 			line-height: 36px;
 			margin-top: 24px;
 		}
+	}
+	.signup__block{
+		width: 38%;
+		float:right;
 	}
 }
