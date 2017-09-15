@@ -7,7 +7,8 @@ function NavButtons(props){
 					key={index}
 					name={button.name}
 					completed={button.completed}
-					accessible={button.accessible}/>
+					accessible={button.accessible}
+					active={button.active}/>
 			})}
 		</div>
 	)
@@ -18,6 +19,7 @@ NavButtons.propTypes = {
 	navButtons: React.PropTypes.arrayOf(React.PropTypes.shape({
 		name: React.PropTypes.string.isRequired,
 		completed: React.PropTypes.bool.isRequred,
-		accessible: React.PropTypes.bool.isRequired
-	}))
+		accessible: React.PropTypes.bool.isRequired,
+		active: React.PropTypes.bool.isRequired
+	})),
 }

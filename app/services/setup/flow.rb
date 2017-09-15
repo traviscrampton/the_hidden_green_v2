@@ -5,26 +5,30 @@ class Setup::Flow
 	NAV_BUTTONS = [
 		{
 			name:'Income',
-			completed: false,
+			completed: true,
 			accessible: true,
+			active: true,
 			records: []
 		},
 		{
 			name:'Saving',
 			completed: false,
-			accessible: false,
+			accessible: true,
+			active: false,
 			records: []
 		},
 		{
 			name:'Spending',
 			completed: false,
 			accessible: false,
+			active: false,
 			records: []
 		},
 		{
 			name:'Debts',
 			completed: false,
 			accessible: false,
+			active: false,
 			records: []
 		}
 	]

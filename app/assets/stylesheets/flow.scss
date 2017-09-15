@@ -1,3 +1,4 @@
+@import 'variables';
 #flow{
 	padding: 2% 15%;
 	font-weight: 300;
@@ -19,19 +20,38 @@
 		float:left;
 		width: 25%;
 		line-height:62px;
+		color:#c6cbd1;
+		background: #fafbfc;
 		text-align: center;
 		white-space: nowrap;
 		display: inline-block;
 		overflow:none;
 		border: 1px solid #dfe2e5;
 		border-right: none;
-		&:hover{
-			cursor:pointer;
-		}
 		svg{
 			vertical-align:-6px;
 			margin-right:5px;
+			fill:#c6cbd1;
 		}
+	}
+	.accessible{
+		color: #586069;
+		svg{
+			fill:#586069;
+		}
+		&:hover{
+			background: white;
+			cursor: pointer;
+		}
+	}
+	.completed{
+		background: #fafbfc;
+		svg{
+			fill: $hidden_green;
+		}
+	}
+	.active{
+		background: white;
 	}
 	&--btn:last-child{
 		border-right: 1px solid #dfe2e5
