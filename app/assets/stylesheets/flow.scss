@@ -61,6 +61,11 @@
 
 .activebox__block{
 	text-align: center;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
+	// background: #fafbfc;
+	border: 1px solid #dfe2e5;
+	padding: 25px;
+	margin-top: 10px;
 	&--persisted{
 		color: $hidden_green;
 		font-size: 45px;
@@ -68,7 +73,6 @@
 	}
 	&--prompt{
 		font-size: 22px;
-		margin:25px 0;
 	}
 	&--singleform{
 		display: flex;

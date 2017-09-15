@@ -47,7 +47,6 @@ var Flow = React.createClass({
 		var activeFinance = this.state.activeFinance
 		activeFinance.completed = true
 		activeFinance.records = finance
-
 		var index = this.state.navButtons.indexOf(activeFinance)
 		if(index < 3){
 			this.state.navButtons[index + 1].accessible = true
