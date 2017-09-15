@@ -1,12 +1,39 @@
 #flow{
-	padding: 5% 15%;
+	padding: 2% 15%;
 	font-weight: 300;
 }
 .header__block{
+	margin-bottom:25px;
 	&--title{
 		font-size:45px;
+		margin-bottom: 4px;
 	}
 	&--subtext{
 		font-size: 21px;
+	}
+}
+.navbutton__block{
+	display:flex;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.075);
+	&--btn{
+		float:left;
+		width: 25%;
+		line-height:62px;
+		text-align: center;
+		white-space: nowrap;
+		display: inline-block;
+		overflow:none;
+		border: 1px solid #dfe2e5;
+		border-right: none;
+		&:hover{
+			cursor:pointer;
+		}
+		svg{
+			vertical-align:-6px;
+			margin-right:5px;
+		}
+	}
+	&--btn:last-child{
+		border-right: 1px solid #dfe2e5
 	}
 }
