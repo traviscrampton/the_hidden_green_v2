@@ -12,35 +12,50 @@ var Flow = React.createClass({
 
 	getInitialState: function(){
 		return{
-			navButtons: this.props.navButtons
+			navButtons: this.props.navButtons,
+			activeFinance: this.setActiveFinance()
 		}
 	},
 
 	handleButtonClick: function(index){
-		var btn = this.state.navButtons[index]
-		this.setActiveFalse()
-		btn.active = true
+		this.state.activeFinance = this.state.navButtons[index]
 		this.setState(this.state)
 	},
 
-	setActiveFalse: function(){
-		var isActive = this.activeFinance()
-		isActive.active = false
-	},
-
-	activeFinance: function(){
-		var isActive = this.state.navButtons.find(function(btn){
+	setActiveFinance: function(){
+		var isActive = this.props.navButtons.find(function(btn){
 			return btn.active == true
 		})
 		return isActive
 	},
 
 	persistFinance: function(data){
-		debugger;
+		$.ajax({
+			url: this.state.activeFinance.url,
+			type: 'POST',
+			context: this,
+			data: data,
+			success: function(finance){
+				this.handleSuccess(finance)
+			}, error: function(){
+				console.log("There has been a grave mistake")
+			}
+		})
+	},
+
+	handleSuccess: function(finance){
+		var activeFinance = this.state.activeFinance
+		activeFinance.completed = true
+		activeFinance.records = finance
+
+		var index = this.state.navButtons.indexOf(activeFinance)
+		if(index < 3){
+			this.state.navButtons[index + 1].accessible = true
+		}
+		this.setState(this.state)
 	},
 
 	render: function(){
-		var activeFinance = this.activeFinance()
 		return(
 			<div>
 				<div className="navbutton__block">
@@ -50,12 +65,17 @@ var Flow = React.createClass({
 							name={button.name}
 							completed={button.completed}
 							accessible={button.accessible}
-							active={button.active}
+							active={this.state.activeFinance == button}
 							prompt={button.prompt}
 							buttonClick={function(){this.handleButtonClick(index)}.bind(this)}/>
 					}.bind(this))}
 				</div>
-				<ActiveBox completed={activeFinance.completed} prompt={activeFinance.prompt} record={activeFinance.records} edit={false} persistFinance={this.persistFinance} />
+				<ActiveBox
+					completed={this.state.activeFinance.completed}
+					prompt={this.state.activeFinance.prompt}
+					record={this.state.activeFinance.records}
+					edit={false}
+					persistFinance={this.persistFinance} />
 			</div>
 		)
 	}

@@ -9,6 +9,7 @@ class Setup::Flow
 			prompt:"On average and after tax how much money do you make in a month?",
 			accessible: true,
 			active: true,
+			url:'/incomes',
 			records: []
 		},
 		{
@@ -17,6 +18,7 @@ class Setup::Flow
 			prompt:"Combining your checking account and savings how much money do you have on hand?",
 			accessible: false,
 			active: false,
+			url:'/savings',
 			records: []
 		},
 		{
@@ -25,6 +27,7 @@ class Setup::Flow
 			prompt:"On average in a given month how much money do you spend?",
 			accessible: false,
 			active: false,
+			url:'/spendings',
 			records: []
 		},
 		{
@@ -33,6 +36,7 @@ class Setup::Flow
 			prompt:"What are your current debts?",
 			accessible: false,
 			active: false,
+			url:'/debts',
 			records: []
 		}
 	]

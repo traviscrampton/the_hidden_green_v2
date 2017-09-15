@@ -18,7 +18,7 @@ var SingleFinanceForm = React.createClass({
 
 	onSubmit: function(e){
 		e.preventDefault();
-		var data = this.state.amount	
+		var data = {"amount":this.state.amount}
 		this.props.persistFinance(data)
 	},
 
