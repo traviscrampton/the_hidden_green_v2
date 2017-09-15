@@ -51,7 +51,7 @@ var Flow = React.createClass({
 							buttonClick={function(){this.handleButtonClick(index)}.bind(this)}/>
 					}.bind(this))}
 				</div>
-				<ActiveBox completed={activeFinance.completed} prompt={activeFinance.prompt} />
+				<ActiveBox completed={activeFinance.completed} prompt={activeFinance.prompt} record={activeFinance.records} edit={false} /> 
 			</div>
 		)
 	}

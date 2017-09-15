@@ -5,7 +5,7 @@ class Setup::Flow
 	NAV_BUTTONS = [
 		{
 			name:'Income',
-			completed: true,
+			completed: false,
 			prompt:"On average and after tax how much money do you make in a month?",
 			accessible: true,
 			active: true,
@@ -15,7 +15,7 @@ class Setup::Flow
 			name:'Saving',
 			completed: false,
 			prompt:"Combining your checking account and savings how much money do you have on hand?",
-			accessible: true,
+			accessible: false,
 			active: false,
 			records: []
 		},

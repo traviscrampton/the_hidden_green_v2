@@ -61,6 +61,11 @@
 
 .activebox__block{
 	text-align: center;
+	&--persisted{
+		color: $hidden_green;
+		font-size: 45px;
+		font-weight: 700;
+	}
 	&--prompt{
 		font-size: 22px;
 		margin:25px 0;
@@ -68,19 +73,10 @@
 	&--singleform{
 		display: flex;
 		padding: 0 13%;
-		svg, input[type="number"]{
-			display: inline-block;
-			float:left;
-			white-space: nowrap;
-		}
-		svg{
-			fill: $hidden_green;
-		}
 		input[type="number"]{
 			border: none;
 			border-bottom: 1px solid $hidden_green;
 			font-size: 45px;
-			vertical-align: 8px;
 			color: $hidden_green;
 			&:focus{
 				outline: none;
