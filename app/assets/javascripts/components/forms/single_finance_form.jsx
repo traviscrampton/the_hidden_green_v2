@@ -1,7 +1,8 @@
 var SingleFinanceForm = React.createClass({
 
 	propTypes: {
-		amount: React.PropTypes.number
+		amount: React.PropTypes.number,
+		persistFinance: React.PropTypes.func.isRequired
 	},
 
 	getInitialState: function(){
@@ -17,7 +18,8 @@ var SingleFinanceForm = React.createClass({
 
 	onSubmit: function(e){
 		e.preventDefault();
-		debugger;
+		var data = this.state.amount	
+		this.props.persistFinance(data)
 	},
 
 	render: function(){

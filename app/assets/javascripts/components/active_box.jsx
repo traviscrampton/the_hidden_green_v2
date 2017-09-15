@@ -13,12 +13,13 @@ function formOrObject(props){
 			<div className="activebox__block--persisted">$ {props.record.amount}</div>
 		)
 	} else {
-		return <SingleFinanceForm />
+		return <SingleFinanceForm persistFinance={props.persistFinance} />
 	}
 }
 
 ActiveBox.propTypes = {
 	completed: React.PropTypes.bool.isRequired,
 	prompt:React.PropTypes.string.isRequired,
-	edit: React.PropTypes.bool.isRequired
+	edit: React.PropTypes.bool.isRequired,
+	persistFinance: React.PropTypes.func.isRequired
 }

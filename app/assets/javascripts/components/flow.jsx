@@ -35,6 +35,10 @@ var Flow = React.createClass({
 		return isActive
 	},
 
+	persistFinance: function(data){
+		debugger;
+	},
+
 	render: function(){
 		var activeFinance = this.activeFinance()
 		return(
@@ -51,7 +55,7 @@ var Flow = React.createClass({
 							buttonClick={function(){this.handleButtonClick(index)}.bind(this)}/>
 					}.bind(this))}
 				</div>
-				<ActiveBox completed={activeFinance.completed} prompt={activeFinance.prompt} record={activeFinance.records} edit={false} /> 
+				<ActiveBox completed={activeFinance.completed} prompt={activeFinance.prompt} record={activeFinance.records} edit={false} persistFinance={this.persistFinance} />
 			</div>
 		)
 	}
