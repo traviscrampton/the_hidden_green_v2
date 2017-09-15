@@ -28,7 +28,8 @@ NavButton.propTypes = {
 	completed: React.PropTypes.bool.isRequired,
 	accessible: React.PropTypes.bool.isRequired,
 	active: React.PropTypes.bool.isRequired,
-	buttonClick: React.PropTypes.func.isRequired
+	buttonClick: React.PropTypes.func.isRequired,
+	prompt:React.PropTypes.string.isRequired
 }
 
 NavButton.icons = {

@@ -1,4 +1,5 @@
 @import 'variables';
+
 #flow{
 	padding: 2% 15%;
 	font-weight: 300;
@@ -55,5 +56,40 @@
 	}
 	&--btn:last-child{
 		border-right: 1px solid #dfe2e5
+	}
+}
+
+.activebox__block{
+	text-align: center;
+	&--prompt{
+		font-size: 22px;
+		margin:25px 0;
+	}
+	&--singleform{
+		display: flex;
+		padding: 0 13%;
+		svg, input[type="number"]{
+			display: inline-block;
+			float:left;
+			white-space: nowrap;
+		}
+		svg{
+			fill: $hidden_green;
+		}
+		input[type="number"]{
+			border: none;
+			border-bottom: 1px solid $hidden_green;
+			font-size: 45px;
+			vertical-align: 8px;
+			color: $hidden_green;
+			&:focus{
+				outline: none;
+			}
+		}
+		.singleSubmit{
+			input[type="submit"]{
+				margin-top:50px;
+			}
+		}
 	}
 }

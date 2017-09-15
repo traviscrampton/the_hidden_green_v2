@@ -5,7 +5,8 @@ var Flow = React.createClass({
 			name: React.PropTypes.string.isRequired,
 			completed: React.PropTypes.bool.isRequred,
 			accessible: React.PropTypes.bool.isRequired,
-			active: React.PropTypes.bool.isRequired
+			active: React.PropTypes.bool.isRequired,
+			prompt:React.PropTypes.string.isRequired
 		}))
 	},
 
@@ -23,24 +24,34 @@ var Flow = React.createClass({
 	},
 
 	setActiveFalse: function(){
-		var navButtons = this.state.navButtons
-		for(i = 0; i < navButtons.length; ++i){
-			navButtons[i].active = false
-		}
+		var isActive = this.activeFinance()
+		isActive.active = false
+	},
+
+	activeFinance: function(){
+		var isActive = this.state.navButtons.find(function(btn){
+			return btn.active == true
+		})
+		return isActive
 	},
 
 	render: function(){
+		var activeFinance = this.activeFinance()
 		return(
-			<div className="navbutton__block">
-				{this.state.navButtons.map(function(button, index){
-					return <NavButton
-						key={index}
-						name={button.name}
-						completed={button.completed}
-						accessible={button.accessible}
-						active={button.active}
-						buttonClick={function(){this.handleButtonClick(index)}.bind(this)}/>
-				}.bind(this))}
+			<div>
+				<div className="navbutton__block">
+					{this.state.navButtons.map(function(button, index){
+						return <NavButton
+							key={index}
+							name={button.name}
+							completed={button.completed}
+							accessible={button.accessible}
+							active={button.active}
+							prompt={button.prompt}
+							buttonClick={function(){this.handleButtonClick(index)}.bind(this)}/>
+					}.bind(this))}
+				</div>
+				<ActiveBox completed={activeFinance.completed} prompt={activeFinance.prompt} />
 			</div>
 		)
 	}
