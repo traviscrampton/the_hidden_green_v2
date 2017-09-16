@@ -62,7 +62,6 @@
 .activebox__block{
 	text-align: center;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
-	// background: #fafbfc;
 	border: 1px solid #dfe2e5;
 	padding: 25px;
 	margin-top: 10px;
@@ -73,23 +72,51 @@
 	}
 	&--prompt{
 		font-size: 22px;
+		margin-bottom: 17px;
 	}
 	&--singleform{
-		display: flex;
-		padding: 0 13%;
 		input[type="number"]{
 			border: none;
-			border-bottom: 1px solid $hidden_green;
-			font-size: 45px;
-			color: $hidden_green;
+			text-align: center;
+	    padding: 12px 6px;
+	    font-size: 27px;
+	    color: #82CA9C;
+	    border-right: 1px solid #dfe2e5;;
+	    background: white;
+	    /* padding-left: 23px; */
+	    /* text-align: right; */
+	    margin-right:13px;
+	    width: 70%;
 			&:focus{
 				outline: none;
 			}
 		}
-		.singleSubmit{
-			input[type="submit"]{
-				margin-top:50px;
+		input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+		  -webkit-appearance: none;
+		  margin: 0;
+		}
+		.input_and_submit{
+			display:inline-block;
+			background: white;
+		  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.075);
+			font-size: 27px;
+	    color: #82CA9C;
+			font-weight: 400;
+			border: 1px solid #dfe2e5;
+			svg{
+				fill: $hidden_green;
+				vertical-align:-8px;
+				&:hover{
+					fill: darken($hidden_green, 10%);
+					cursor: pointer;
+				}
 			}
+			input[type="submit"]{
+				display:none;
+			}
+		}
+		.singleSubmit{
+
 		}
 	}
 }

@@ -8,6 +8,9 @@ a{
 		color: darken(#82CA9C, 20%)
 	}
 }
+::-webkit-input-placeholder {
+	color:lighten(#c6cbd1, 10%);
+}
 
 .cf:after {
   content: ".";

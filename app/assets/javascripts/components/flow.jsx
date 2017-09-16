@@ -50,6 +50,7 @@ var Flow = React.createClass({
 		var index = this.state.navButtons.indexOf(activeFinance)
 		if(index < 3){
 			this.state.navButtons[index + 1].accessible = true
+			this.state.activeFinance = this.state.navButtons[index + 1]
 		}
 		this.setState(this.state)
 	},
