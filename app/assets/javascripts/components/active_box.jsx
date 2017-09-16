@@ -2,13 +2,15 @@ function ActiveBox(props){
 	return(
 		<div className="activebox__block">
 			<div className="activebox__block--prompt">{props.prompt}</div>
-			{this.formOrObject(props)}
+			{this.formOrObjectOrDebt(props)}
 		</div>
 	)
 }
 
-function formOrObject(props){
-	if(props.completed && !props.edit){
+function formOrObjectOrDebt(props){
+	if(props.name == "Debts"){
+		return <DebtContainer records={props.record}/>
+	} else if(props.completed){
 		return(
 			<div className="activebox__block--persisted">$ {props.record.amount}</div>
 		)
@@ -20,6 +22,5 @@ function formOrObject(props){
 ActiveBox.propTypes = {
 	completed: React.PropTypes.bool.isRequired,
 	prompt:React.PropTypes.string.isRequired,
-	edit: React.PropTypes.bool.isRequired,
 	persistFinance: React.PropTypes.func.isRequired
 }

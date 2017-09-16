@@ -33,7 +33,7 @@ class Setup::Flow
 		{
 			name:'Debts',
 			completed: false,
-			prompt:"What are your current debts?",
+			prompt:"",
 			accessible: false,
 			active: false,
 			url:'/debts',

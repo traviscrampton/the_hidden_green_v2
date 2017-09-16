@@ -74,7 +74,7 @@ var Flow = React.createClass({
 					completed={this.state.activeFinance.completed}
 					prompt={this.state.activeFinance.prompt}
 					record={this.state.activeFinance.records}
-					edit={false}
+					name={this.state.activeFinance.name}
 					persistFinance={this.persistFinance} />
 			</div>
 		)
