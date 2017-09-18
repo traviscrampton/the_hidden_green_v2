@@ -1,10 +1,11 @@
 function DebtContainer(props){
 	return(
 		<div className="debt__container__block">
-			<DebtForm />
+			<DebtForm persistFinance={props.persistFinance}/>
 			<div className="debt__container__block--debts">
 				{props.records.map(function(debt, index){
 					return <Debt
+						key={index}
 						name={debt.name}
 						amount={debt.amount}
 						interest_rate={debt.interest_rate}
@@ -20,6 +21,7 @@ DebtContainer.propTypes = {
 		name: React.PropTypes.string.isRequired,
 		amount: React.PropTypes.number.isRequired,
 		interest_rate: React.PropTypes.number.isRequired,
-		minimum_payment: React.PropTypes.number.isRequired
-	}))
+		minimum_payment: React.PropTypes.number.isRequired,
+	})),
+	persistFinance: React.PropTypes.func.isRequired
 }

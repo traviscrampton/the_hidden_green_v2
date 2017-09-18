@@ -12,4 +12,14 @@ class User < ApplicationRecord
 	has_many :debts, as: :debtable
 	has_many :months
 
+
+
+	# this is a method for me to be able to restart everything
+	def destroy_finances
+		saving.destroy
+		income.destroy
+		spending.destroy
+		debts.destroy_all
+	end
+
 end

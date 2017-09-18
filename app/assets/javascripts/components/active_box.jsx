@@ -9,7 +9,7 @@ function ActiveBox(props){
 
 function formOrObjectOrDebt(props){
 	if(props.name == "Debts"){
-		return <DebtContainer records={props.record}/>
+		return <DebtContainer persistFinance={props.persistFinance} records={props.record}/>
 	} else if(props.completed){
 		return(
 			<div className="activebox__block--persisted">$ {props.record.amount}</div>
@@ -22,5 +22,6 @@ function formOrObjectOrDebt(props){
 ActiveBox.propTypes = {
 	completed: React.PropTypes.bool.isRequired,
 	prompt:React.PropTypes.string.isRequired,
+	persistFinance: React.PropTypes.func.isRequired,
 	persistFinance: React.PropTypes.func.isRequired
 }
