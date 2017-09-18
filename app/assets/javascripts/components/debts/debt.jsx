@@ -2,8 +2,15 @@ function Debt(props){
 	return(
 		<div className="debt__box">
 			<div className="debt__box--top cf">
-				<span className="debt__box--left">{props.name}</span>
-				<span className="debt__box--right">${props.amount}</span>
+				<span className="debt__box--left">
+					{props.name}
+					<span className="delete__cta" onClick={props.deleteDebt}>
+						Delete
+					</span>
+				</span>
+				<span className="debt__box--right">
+					${props.amount}
+				</span>
 			</div>
 			<div className="debt__box--bottom cf">
 				<span className="debt__box--left">
@@ -21,5 +28,6 @@ Debt.propTypes = {
 	name: React.PropTypes.string.isRequired,
 	amount: React.PropTypes.number.isRequired,
 	interest_rate: React.PropTypes.number.isRequired,
-	minimum_payment: React.PropTypes.number.isRequired
+	minimum_payment: React.PropTypes.number.isRequired,
+	deleteDebt: React.PropTypes.func.isRequired
 }

@@ -9,11 +9,16 @@ function DebtContainer(props){
 						name={debt.name}
 						amount={debt.amount}
 						interest_rate={debt.interest_rate}
-						minimum_payment={debt.minimum_payment} />
+						minimum_payment={debt.minimum_payment}
+						deleteDebt={function(){this.handleDebtClick(props, index)}} />
 				})}
 			</div>
 		</div>
 	)
+}
+
+function handleDebtClick(props, index){
+	props.deleteDebt(index)
 }
 
 DebtContainer.propTypes = {
@@ -23,5 +28,6 @@ DebtContainer.propTypes = {
 		interest_rate: React.PropTypes.number.isRequired,
 		minimum_payment: React.PropTypes.number.isRequired,
 	})),
-	persistFinance: React.PropTypes.func.isRequired
+	persistFinance: React.PropTypes.func.isRequired,
+	deleteDebt: React.PropTypes.func.isRequired
 }
