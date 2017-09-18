@@ -1,6 +1,6 @@
 function DebtContainer(props){
 	return(
-		<div className="debt__container__block">
+		<div className="debt__container__block cf">
 			<DebtForm persistFinance={props.persistFinance}/>
 			<div className="debt__container__block--debts">
 				{props.records.map(function(debt, index){

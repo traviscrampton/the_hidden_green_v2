@@ -117,9 +117,12 @@
 	}
 
 	.debt__container__block{
-		&--form{
+		&--form, &--debts{
+			display: inline-block;
 			width: 50%;
-			text-align: left;
+			float:left;
+		}
+		&--form{
 			input[type="text"], input[type="number"]{
 				border: 1px solid $border-color;
 				margin: 0px;
@@ -131,6 +134,31 @@
 				border: 1px solid $border-color;
 				border-left: none;
 				padding: 12.5px;
+			}
+		}
+		.debt__box{
+			border: 1px solid $border-color;
+			margin-bottom: 10px;
+			position: relative;
+			font-size:14px;
+			min-height: 50px;
+			&--top, &--bottom{
+				position: absolute;
+				width: 100%;
+			}
+			&--top{
+				top: 5px;
+			}
+			&--bottom{
+				bottom: 5px;
+			}
+			&--left{
+				float:left;
+				margin-left: 5px;
+			}
+			&--right{
+				float:right;
+				margin-right: 5px;
 			}
 		}
 	}

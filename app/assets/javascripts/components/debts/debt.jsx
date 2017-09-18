@@ -1,10 +1,18 @@
 function Debt(props){
 	return(
-		<div>
-			name: {props.name}
-			amount: {props.amount}
-			interest rate: {props.interest_rate}
-			minimum monthly payment: {props.minimum_payment}
+		<div className="debt__box">
+			<div className="debt__box--top cf">
+				<span className="debt__box--left">{props.name}</span>
+				<span className="debt__box--right">${props.amount}</span>
+			</div>
+			<div className="debt__box--bottom cf">
+				<span className="debt__box--left">
+					Interest Rate: {props.interest_rate}
+				</span>
+				<span className="debt__box--right">
+					Min Payment: {props.minimum_payment}
+				</span>
+			</div>
 		</div>
 	)
 }
