@@ -1,3 +1,4 @@
+@import 'variables';
 		.login__block{
 
 			width: 250px;
@@ -39,10 +40,10 @@
 			}
 			input[type="submit"]{
 				color: #fff;
-				background-color: #82CA9C;
-				background-image: linear-gradient(-180deg, darken(#82CA9C, 10%) 0%, #82CA9C 90%);
+				background-color: $hidden_green;
+				background-image: linear-gradient(-180deg, darken($hidden_green, 10%) 0%, $hidden_green 90%);
 				&:hover{
-					background-image: linear-gradient(-180deg, darken(#82CA9C, 20%) 0%, #82CA9C 90%);
+					background-image: linear-gradient(-180deg, darken($hidden_green, 20%) 0%, $hidden_green 90%);
 					cursor: pointer;
 				}
 			}

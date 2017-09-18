@@ -14,6 +14,26 @@
 		font-size: 21px;
 	}
 }
+.header__block, .calculation__button{
+	display: inline-block;
+}
+.calculation__button{
+	float:right;
+	button{
+		margin-top:28px;
+		border: 1px solid $hidden_green;
+		font-size: 16px;
+		border-radius: 3px;
+		padding: 16px;
+		color: #fff;
+		background-color: $hidden_green;
+		background-image: linear-gradient(-180deg, darken($hidden_green, 10%) 0%, $hidden_green 90%);
+		&:hover{
+			background-image: linear-gradient(-180deg, darken($hidden_green, 20%) 0%, $hidden_green 90%);
+			cursor: pointer;
+		}
+	}
+}
 .navbutton__block{
 	display:flex;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.075);

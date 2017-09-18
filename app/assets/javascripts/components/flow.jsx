@@ -11,10 +11,11 @@ var Flow = React.createClass({
 	},
 
 	getInitialState: function(){
+		var calculation = this.readyForCalculation(this.props.navButtons)
 		return{
 			navButtons: this.props.navButtons,
 			activeFinance: this.setActiveFinance(),
-			readyForCalculation: this.readyForCalculation(this.props.navButtons)
+			readyForCalculation: calculation
 		}
 	},
 
@@ -63,7 +64,7 @@ var Flow = React.createClass({
 			this.state.activeFinance = this.state.navButtons[index + 1]
 		}
 		var calculation = this.readyForCalculation(this.state.navButtons)
-		this.state.readyForCalulation = calculation	
+		this.state.readyForCalculation = calculation
 		this.setState(this.state)
 	},
 
@@ -85,14 +86,30 @@ var Flow = React.createClass({
 	},
 
 	handleDebtRemoval: function(index){
-		this.state.activeFinance.records.splice(index, 1);
+		var activeFinance = this.state.activeFinance
+		activeFinance.records.splice(index, 1);
+		if(activeFinance.records.length == 0){
+			activeFinance.completed = false
+		}
+		var calculation = this.readyForCalculation(this.state.navButtons)
+		this.state.readyForCalculation = calculation
 		this.setState(this.state)
 	},
 
 	render: function(){
 		return(
-			<div>
-				ready for calculation is {this.state.readyForCalculation.toString()}
+			<div id="flow">
+				<div className="header__block">
+					<div className="header__block--title">Let's get out of debt</div>
+					<div className="header__block--subtext">But first we need some basic finances</div>
+				</div>
+				<div className="calculation__button">
+					{this.state.readyForCalculation ?
+						<form action="/calculate">
+							<button>Calculate Debt Plan</button>
+						</form> : ""
+					}
+				</div>
 				<div className="navbutton__block">
 					{this.state.navButtons.map(function(button, index){
 						return <NavButton
