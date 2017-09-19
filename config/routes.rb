@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 	root to:'home#index'
 	get '/flow' => 'home#flow'
-	get '/calculate' => 'calculate#generate'
 
+	resources :months
 	resources :incomes
 	resources :savings
 	resources :debts

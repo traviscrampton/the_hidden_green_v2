@@ -8,7 +8,12 @@ class Months::MonthRecommendations
 	end
 
 	def call
-		month.has_three_months_spending ? transfer_to_debt : transfer_to_savings
+		if month.has_three_months_spending
+			transfer_to_debt
+		else
+			transfer_to_savings
+		end
+		return month
 	end
 
 	def transfer_to_savings

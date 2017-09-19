@@ -103,7 +103,7 @@ var Flow = React.createClass({
 				</div>
 				<div className="calculation__button">
 					{this.state.readyForCalculation ?
-						<form action="/calculate">
+						<form action="/months" method="POST">
 							<button>Calculate Debt Plan</button>
 						</form> : ""
 					}

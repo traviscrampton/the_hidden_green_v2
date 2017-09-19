@@ -1,7 +1,7 @@
 class Debt < ActiveRecord::Base
 	belongs_to :debtable, polymorphic: true
 
-	has_many :goals, as: :goalable
+	has_many :goals, as: :goalable, dependent: :destroy
 
 
 	def subtract_min_payment
