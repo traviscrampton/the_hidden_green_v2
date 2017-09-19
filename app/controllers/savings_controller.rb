@@ -5,7 +5,7 @@ class SavingsController < ApplicationController
 	def create
 		saving = current_user.build_saving(saving_params)
 		saving.save!
-		render json: saving_to_currency(saving)
+		render json: saving.currency_attrs
 	end
 
 	def update

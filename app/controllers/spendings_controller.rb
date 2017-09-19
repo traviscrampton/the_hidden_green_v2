@@ -5,7 +5,7 @@ class SpendingsController < ApplicationController
 	def create
 		spending = current_user.build_spending(spending_params)
 		spending.save!
-		render json: spending_to_currency(spending)
+		render json: spending.currency_attrs
 	end
 
 	def update
@@ -21,12 +21,6 @@ class SpendingsController < ApplicationController
 	end
 
 	private
-
-	def spending_to_currency(spending)
-		attrs = spending.attributes
-		attrs['amount'] = spending.to_currency
-		attrs
-	end
 
 	def spending_params
 		params.permit(:amount)

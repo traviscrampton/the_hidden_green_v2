@@ -5,7 +5,7 @@ class IncomesController < ApplicationController
 	def create
 		income = current_user.build_income(income_params)
 		income.save!
-		render json: income_to_currency(income)
+		render json: income.currency_attrs
 	end
 
 	def update
@@ -21,12 +21,6 @@ class IncomesController < ApplicationController
 	end
 
 	private
-
-	def income_to_currency(income)
-		attrs = income.attributes
-		attrs['amount'] = income.to_currency
-		attrs
-	end
 
 	def income_params
 		params.permit(:amount)

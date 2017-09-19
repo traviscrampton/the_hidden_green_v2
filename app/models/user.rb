@@ -22,4 +22,8 @@ class User < ApplicationRecord
 		debts.destroy_all
 	end
 
+	def debt_currency_attrs
+		debts.map { |debt| debt.currency_attrs}
+	end
+
 end

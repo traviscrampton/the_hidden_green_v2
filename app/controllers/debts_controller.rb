@@ -5,7 +5,7 @@ class DebtsController < ApplicationController
 	def create
 		debt = current_user.debts.new(debt_params)
 		debt.save!
-		render json: debts_to_currency
+		render json: current_user.debt_currency_attrs
 	end
 
 	def update
@@ -21,14 +21,6 @@ class DebtsController < ApplicationController
 	end
 
 	private
-
-	def debts_to_currency
-		current_user.debts.map do |debt|
-			attrs = debt.attributes
-			attrs["amount"] = debt.to_currency
-			attrs
-		end
-	end
 
 	def debt_params
 		params.permit(:amount, :minimum_payment, :interest_rate, :name)

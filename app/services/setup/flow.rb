@@ -60,19 +60,14 @@ class Setup::Flow
 			btn[:completed] = true
 			NAV_BUTTONS[index + 1][:accessible] = true unless index == 3
 
-			mapped = [finances].map do |finance|
-				attrs = finance.attributes
-				attrs[:amount] = finance.to_currency
-				attrs
-			end
-
-
-			if btn[:name] != "Debts"
-				btn[:records] = mapped.first
+			btn[:records] = if btn[:name] != "Debts"
+				finances.currency_attrs
 			else
-				btn[:records] = mapped
+				finances.map { |debt| debt.currency_attrs }
 			end
 		end
+
+		find_active_btn
 	end
 
 	def find_active_btn
