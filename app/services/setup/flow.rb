@@ -8,7 +8,7 @@ class Setup::Flow
 			completed: false,
 			prompt:"On average and after tax how much money do you make in a month?",
 			accessible: true,
-			active: true,
+			active: false,
 			url:'/incomes',
 			records: []
 		},
@@ -48,6 +48,12 @@ class Setup::Flow
 	end
 
 	def generate
+		find_completed_and_accessible
+		find_active_btn
+		return NAV_BUTTONS
+	end
+
+	def find_completed_and_accessible
 		NAV_BUTTONS.each_with_index do |btn, index|
 			finances = user.send(btn[:name].downcase)
 			next if finances.blank?
@@ -55,7 +61,12 @@ class Setup::Flow
 			NAV_BUTTONS[index + 1][:accessible] = true unless index == 3
 			btn[:records] = finances
 		end
-		return NAV_BUTTONS
 	end
 
+	def find_active_btn
+		active = NAV_BUTTONS.select{ |btn|
+			btn[:accessible] == true
+		}.last
+		active[:active] = true
+	end
 end
