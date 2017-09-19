@@ -15,7 +15,7 @@ class Setup::Flow
 		{
 			name:'Saving',
 			completed: false,
-			prompt:"Combining your checking account and savings how much money do you have on hand?",
+			prompt:"How much money do you have in your savings?",
 			accessible: false,
 			active: false,
 			url:'/savings',

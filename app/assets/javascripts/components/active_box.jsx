@@ -1,7 +1,6 @@
 function ActiveBox(props){
 	return(
 		<div className="activebox__block">
-			<div className="activebox__block--prompt">{props.prompt}</div>
 			{this.formOrObjectOrDebt(props)}
 		</div>
 	)
@@ -12,10 +11,24 @@ function formOrObjectOrDebt(props){
 		return <DebtContainer deleteDebt={props.deleteDebt} persistFinance={props.persistFinance} records={props.record}/>
 	} else if(props.completed){
 		return(
-			<div className="activebox__block--persisted">$ {props.record.amount}</div>
+			<div className="activeBox__block--box">
+				<div className="activebox__block--prompt">
+					{props.prompt}
+				</div>
+				<div className="activebox__block--persisted">
+					$ {props.record.amount}
+				</div>
+			</div>
 		)
 	} else {
-		return <SingleFinanceForm persistFinance={props.persistFinance} />
+		return(
+			<div className="activeBox__block--box">
+				<div className="activebox__block--prompt">
+					{props.prompt}
+				</div>
+				<SingleFinanceForm persistFinance={props.persistFinance} />
+			</div>
+		)
 	}
 }
 

@@ -22,6 +22,7 @@
 	button{
 		margin-top:28px;
 		border: 1px solid $hidden_green;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 		font-size: 16px;
 		border-radius: 3px;
 		padding: 16px;
@@ -80,11 +81,23 @@
 }
 
 .activebox__block{
+	height: 300px;
 	text-align: center;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 	border: 1px solid $border-color;
 	padding: 25px;
 	margin-top: 10px;
+	position: relative;
+	.activeBox__block--box{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-top: -6%;
+		margin-left: -37%;
+		width: 75%;
+	  height: 200px;
+
+	}
 	&--persisted{
 		color: $hidden_green;
 		font-size: 45px;
@@ -119,6 +132,7 @@
 	input[type="number"], input[type="text"]{
 		border: none;
 		text-align: center;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 		padding: 12px 6px;
 		font-size: 27px;
 		color: #82CA9C;
@@ -139,16 +153,42 @@
 	.debt__container__block{
 		&--form, &--debts{
 			display: inline-block;
-			width: 50%;
 			float:left;
 		}
+		&--debts{
+			width: 60%;
+			height: 266px;
+			overflow: auto;
+		}
 		&--form{
+			width: 40%;
+			text-align: left;
 			input[type="text"], input[type="number"]{
 				border: 1px solid $border-color;
 				margin: 0px;
-				margin-bottom: 10px;
+				margin-bottom: 18px;
 				text-align: left;
 				font-size: 17px;
+				width: 80%;
+			}
+			input[type="submit"]{
+				display: none;
+			}
+			label{
+				float:right;
+				margin-right: 16%;
+				svg{
+					border: 1px solid $border-color;
+					fill: $hidden_green;
+					padding: 3px;
+					box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
+				}
+				&:hover{
+					cursor: pointer;
+					svg{
+						fill: darken($hidden_green, 10%);
+					}
+				}
 			}
 			.percentage__translator{
 				border: 1px solid $border-color;
@@ -156,29 +196,48 @@
 				padding: 12.5px;
 			}
 		}
+		.no__debts{
+			font-size: 21px;
+		}
 		.debt__box{
 			border: 1px solid $border-color;
 			margin-bottom: 10px;
 			position: relative;
 			font-size:14px;
-			min-height: 50px;
+			min-height: 55px;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 			&--top, &--bottom{
 				position: absolute;
 				width: 100%;
 			}
 			&--top{
-				top: 5px;
+				top: 7px;
 			}
 			&--bottom{
-				bottom: 5px;
+				bottom: 7px;
 			}
 			&--left{
 				float:left;
-				margin-left: 5px;
+				margin-left: 10px;
 			}
 			&--right{
 				float:right;
-				margin-right: 5px;
+				margin-right: 10px;
+			}
+			.delete__cta{
+				color: darkred;
+				font-size: 10px;
+				margin-left: 5px;
+				display:none;
+				&:hover{
+					text-decoration: underline;
+					cursor: pointer;
+				}
+			}
+			&:hover{
+				.delete__cta{
+					display:unset;
+				}
 			}
 		}
 	}

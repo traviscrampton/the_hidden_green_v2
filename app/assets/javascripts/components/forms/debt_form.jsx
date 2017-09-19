@@ -35,7 +35,7 @@ var DebtForm = React.createClass({
 		return(
 			<form onSubmit={this.onSubmit} className="debt__container__block--form">
 				<div>
-					<input type="text" name="name" onChange={this.onInputChange} value={this.state.name} placeholder="Name of Debt"/>
+					<input autoFocus='true' type="text" name="name" onChange={this.onInputChange} value={this.state.name} placeholder="Name of Debt"/>
 				</div>
 				<div>
 					<input type="number" name="amount" onChange={this.onInputChange} value={this.state.amount} placeholder="Amount e.g. 15000.00" />
@@ -46,7 +46,13 @@ var DebtForm = React.createClass({
 				<div>
 					<input type="number" name="minimum_payment" onChange={this.onInputChange} value={this.state.minimum_payment} placeholder="Minimum Monthly Payment" />
 				</div>
-				<input type="submit" />
+				<label>
+					<svg height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0h24v24H0z" fill="none"/>
+						<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+					</svg>
+					<input type="submit" />
+				</label>
 			</form>
 		)
 	}

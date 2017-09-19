@@ -3,13 +3,13 @@ function Debt(props){
 		<div className="debt__box">
 			<div className="debt__box--top cf">
 				<span className="debt__box--left">
-					{props.name}
+					<strong>{props.name}</strong>
 					<span className="delete__cta" onClick={props.deleteDebt}>
 						Delete
 					</span>
 				</span>
 				<span className="debt__box--right">
-					${props.amount}
+					<strong>$ {props.amount}</strong>
 				</span>
 			</div>
 			<div className="debt__box--bottom cf">

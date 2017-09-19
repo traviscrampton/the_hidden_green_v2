@@ -20,7 +20,6 @@ var Flow = React.createClass({
 	},
 
 	readyForCalculation: function(categories){
-		// need to find if all instances of complete, four different levels, also need to handle this on delete.
 		var falseCategories = categories.find(function(btn){
 			return btn.completed == false
 		})
@@ -82,7 +81,6 @@ var Flow = React.createClass({
 				console.log("That did not work")
 			}
 		})
-		// find the debt at the index, then find its ID, in the success callback remove it from the array of state and then set the state
 	},
 
 	handleDebtRemoval: function(index){
