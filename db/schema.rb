@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913194236) do
+ActiveRecord::Schema.define(version: 20170919210350) do
 
   create_table "debts", force: :cascade do |t|
     t.string   "name"
     t.string   "debtable_type"
     t.integer  "debtable_id"
-    t.float    "amount"
     t.float    "interest_rate"
     t.float    "minimum_payment"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.decimal  "amount",          precision: 15, scale: 8
   end
 
   create_table "goals", force: :cascade do |t|
@@ -32,10 +32,9 @@ ActiveRecord::Schema.define(version: 20170913194236) do
   create_table "incomes", force: :cascade do |t|
     t.integer  "incomeable_id"
     t.string   "incomeable_type"
-    t.string   "name"
-    t.float    "amount"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.decimal  "amount",          precision: 15, scale: 8
   end
 
   create_table "months", force: :cascade do |t|
@@ -46,19 +45,19 @@ ActiveRecord::Schema.define(version: 20170913194236) do
   end
 
   create_table "savings", force: :cascade do |t|
-    t.float    "amount"
     t.integer  "savingable_id"
     t.string   "savingable_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.decimal  "amount",          precision: 15, scale: 8
   end
 
   create_table "spendings", force: :cascade do |t|
-    t.float    "amount"
     t.integer  "spendable_id"
     t.string   "spendable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.decimal  "amount",         precision: 15, scale: 8
   end
 
   create_table "users", force: :cascade do |t|

@@ -59,7 +59,19 @@ class Setup::Flow
 			next if finances.blank?
 			btn[:completed] = true
 			NAV_BUTTONS[index + 1][:accessible] = true unless index == 3
-			btn[:records] = finances
+
+			mapped = [finances].map do |finance|
+				attrs = finance.attributes
+				attrs[:amount] = finance.to_currency
+				attrs
+			end
+
+
+			if btn[:name] != "Debts"
+				btn[:records] = mapped.first
+			else
+				btn[:records] = mapped
+			end
 		end
 	end
 

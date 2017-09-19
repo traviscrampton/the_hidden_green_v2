@@ -5,7 +5,7 @@ class SavingsController < ApplicationController
 	def create
 		saving = current_user.build_saving(saving_params)
 		saving.save!
-		respond_with saving
+		render json: saving_to_currency(saving)
 	end
 
 	def update
@@ -21,6 +21,12 @@ class SavingsController < ApplicationController
 	end
 
 	private
+
+	def saving_to_currency(saving)
+		attrs = saving.attributes
+		attrs['amount'] = saving.to_currency
+		attrs
+	end
 
 	def saving_params
 		params.permit(:amount)
