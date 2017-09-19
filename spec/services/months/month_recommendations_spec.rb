@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Months::MonthRecommendations do
 	let(:user) { create(:user) }
 	let(:month) { Months::CreateMonthDate.new(user: user).call }
-	let(:income) { create(:income, incomeable_id: month.id, incomeable_type: month.class.name, amount: 2500.00, name:'The Hidden Green')}
+	let(:income) { create(:income, incomeable_id: month.id, incomeable_type: month.class.name, amount: 2500.00)}
 	let(:debt) { create(:debt, debtable_id: month.id, debtable_type: month.class.name, amount: 15000.00, minimum_payment: 100.00, interest_rate: 0.04, name: 'Student Loan')}
 	let(:spending) { create(:spending, spendable_id: month.id, spendable_type: month.class.name, amount: 1000)}
 	let(:month_and_cash_flow) { Months::CalculateCashFlow.new(month: month).call}
