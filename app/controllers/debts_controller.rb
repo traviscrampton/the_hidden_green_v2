@@ -5,7 +5,7 @@ class DebtsController < ApplicationController
 	def create
 		debt = current_user.debts.new(debt_params)
 		debt.save!
-		render json: current_user.debts
+		render json: current_user.debt_currency_attrs
 	end
 
 	def update

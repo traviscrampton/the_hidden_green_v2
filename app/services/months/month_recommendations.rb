@@ -29,15 +29,15 @@ class Months::MonthRecommendations
 	def transfer_part_savings(transfer_goal)
 		create_saving_goal(transfer_goal)
 		cash_flow.amount -= transfer_goal
-		new_saving_amount = month.saving.amount + transfer_goal
-		month.saving.update(amount: new_saving_amount)
+		# new_saving_amount = month.saving.amount + transfer_goal
+		# month.saving.update(amount: new_saving_amount)
 	end
 
 	def transfer_all_savings
 		new_saving_amount = month.saving.amount + cash_flow.amount
 		create_saving_goal(cash_flow.amount)
 		cash_flow.amount = 0
-		month.saving.update(amount: new_saving_amount)
+		# month.saving.update(amount: new_saving_amount)
 	end
 
 	def create_saving_goal(transfer_goal)
@@ -58,14 +58,14 @@ class Months::MonthRecommendations
 	def transfer_part_to_debt(debt)
 		cash_flow.amount -= debt.amount
 		create_debt_goal(debt, debt.amount)
-		debt.update(amount: 0)
+		# debt.update(amount: 0)
 	end
 
 	def transfer_all_to_debt(debt)
-		towards_debt = debt.amount - cash_flow.amount
+		# towards_debt = debt.amount - cash_flow.amount
 		create_debt_goal(debt, cash_flow.amount)
 		cash_flow.amount = 0
-		debt.update(amount: towards_debt)
+		# debt.update(amount: towards_debt)
 	end
 
 	def create_debt_goal(debt, amount)

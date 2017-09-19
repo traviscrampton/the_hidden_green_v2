@@ -4,7 +4,7 @@ RSpec.describe Months::GenerateMonth do
 		context "Generating a new months finances off of a user initial state" do
 			let(:user) { create(:user) }
 			let(:month) { Months::CreateMonthDate.new(user: user).call }
-			let(:income) { create(:income, incomeable_id: user.id, incomeable_type: user.class.name, amount: 2500.00, name:'The Hidden Green')}
+			let(:income) { create(:income, incomeable_id: user.id, incomeable_type: user.class.name, amount: 2500.00)}
 			let(:debt) { create(:debt, debtable_id: user.id, debtable_type: user.class.name, amount: 15000.00, minimum_payment: 100.00, interest_rate: 0.04, name: 'Student Loan')}
 			let(:saving) { create(:saving, savingable_id: user.id, savingable_type: user.class.name, amount: 4000.00)}
 			let(:spending) { create(:spending, spendable_id: user.id, spendable_type: user.class.name, amount: 1000)}

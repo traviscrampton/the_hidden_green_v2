@@ -5,7 +5,7 @@ class SpendingsController < ApplicationController
 	def create
 		spending = current_user.build_spending(spending_params)
 		spending.save!
-		respond_with spending
+		render json: spending.currency_attrs
 	end
 
 	def update

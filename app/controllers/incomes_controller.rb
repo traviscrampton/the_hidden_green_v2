@@ -5,7 +5,7 @@ class IncomesController < ApplicationController
 	def create
 		income = current_user.build_income(income_params)
 		income.save!
-		respond_with income
+		render json: income.currency_attrs
 	end
 
 	def update
