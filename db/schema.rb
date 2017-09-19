@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919210350) do
+ActiveRecord::Schema.define(version: 20170919233750) do
 
   create_table "debts", force: :cascade do |t|
     t.string   "name"
     t.string   "debtable_type"
     t.integer  "debtable_id"
-    t.float    "interest_rate"
     t.float    "minimum_payment"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.decimal  "amount",          precision: 15, scale: 8
+    t.decimal  "interest_rate",   precision: 15, scale: 8
   end
 
   create_table "goals", force: :cascade do |t|

@@ -33,7 +33,12 @@ class Months::GenerateMonth
 
 	def create_debts
 		previous_finance.debts.each do |debt|
-			debt_attrs = debt.attributes.slice("name", "amount", "interest_rate", "minimum_payment")
+			debt_attrs = debt.attributes.slice("name", "interest_rate", "minimum_payment")
+
+			after_interest = InterestRates::PerMonth.new(amount: debt.amount, interest_rate: debt.interest_rate ).calculate
+
+			debt_attrs[:amount] = after_interest
+
 			month.debts.create(debt_attrs)
 		end
 	end
