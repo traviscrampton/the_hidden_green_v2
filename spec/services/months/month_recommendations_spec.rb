@@ -25,7 +25,6 @@ RSpec.describe Months::MonthRecommendations do
 					service.call
 					saving.reload
 					expect(saving.goals.first.amount).to eq(1400.0)
-					expect(saving.amount).to eq(2400.00)
 				end
 			end
 
@@ -42,9 +41,7 @@ RSpec.describe Months::MonthRecommendations do
 
 			it "transfers the proper amount to savings" do
 				service.call
-				saving.reload
 				expect(saving.goals.first.amount).to eq(500.0)
-				expect(saving.amount).to eq(3000.00)
 			end
 		end
 	end
@@ -63,9 +60,7 @@ RSpec.describe Months::MonthRecommendations do
 
 		it "transfers all cashflow towards the single debt" do
 			service.call
-			debt.reload
 			expect(debt.goals.first.amount).to eq(1400.0)
-			expect(debt.amount).to eq(13500.0)
 		end
 	end
 
@@ -87,12 +82,8 @@ RSpec.describe Months::MonthRecommendations do
 
 		it "knocks out all the debts" do
 			service.call
-			debt.reload
-			debt_1.reload
 			expect(debt.goals.first.amount).to eq(950.0)
 			expect(debt_1.goals.first.amount).to eq(175.0)
-			expect(debt.amount).to eq(0)
-			expect(debt_1.amount).to eq(0)
 		end
 	end
 
@@ -112,12 +103,8 @@ RSpec.describe Months::MonthRecommendations do
 
 		it "knocks out all the debts" do
 			service.call
-			debt.reload
-			debt_1.reload
 			expect(debt.goals.first.amount).to eq(200.0)
 			expect(debt_1.goals.first.amount).to eq(1100.0)
-			expect(debt.amount).to eq(0)
-			expect(debt_1.amount).to eq(8800.0)
 		end
 	end
 end
