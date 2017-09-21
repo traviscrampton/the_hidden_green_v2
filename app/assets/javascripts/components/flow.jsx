@@ -1,45 +1,36 @@
-var Flow = React.createClass({
+class Flow extends React.Component{
 
-	propTypes:{
-		navButtons: React.PropTypes.arrayOf(React.PropTypes.shape({
-			name: React.PropTypes.string.isRequired,
-			completed: React.PropTypes.bool.isRequred,
-			accessible: React.PropTypes.bool.isRequired,
-			active: React.PropTypes.bool.isRequired,
-			prompt:React.PropTypes.string.isRequired
-		}))
-	},
+	constructor(props, context){
+		super(props, context);
 
-	getInitialState: function(){
-		var calculation = this.readyForCalculation(this.props.navButtons)
-		return{
+		this.state = {
 			navButtons: this.props.navButtons,
 			activeFinance: this.setActiveFinance(),
-			readyForCalculation: calculation
+			calculation: this.readyForCalculation(this.props.navButtons)
 		}
-	},
+	}
 
-	readyForCalculation: function(categories){
-		var falseCategories = categories.find(function(btn){
+	readyForCalculation(categories){
+		let falseCategories = categories.find((btn) => {
 			return btn.completed == false
 		})
 
 		return falseCategories == undefined
-	},
+	}
 
-	handleButtonClick: function(index){
+	handleButtonClick(index){
 		this.state.activeFinance = this.state.navButtons[index]
 		this.setState(this.state)
-	},
+	}
 
-	setActiveFinance: function(){
-		var isActive = this.props.navButtons.find(function(btn){
+	setActiveFinance(){
+		let isActive = this.props.navButtons.find((btn) => {
 			return btn.active == true
 		})
 		return isActive
-	},
+	}
 
-	persistFinance: function(data){
+	persistFinance(data){
 		$.ajax({
 			url: this.state.activeFinance.url,
 			type: 'POST',
@@ -51,9 +42,9 @@ var Flow = React.createClass({
 				console.log("There has been a grave mistake")
 			}
 		})
-	},
+	}
 
-	handleSuccess: function(finance){
+	handleSuccess(finance){
 		var activeFinance = this.state.activeFinance
 		activeFinance.completed = true
 		activeFinance.records = finance
@@ -65,9 +56,9 @@ var Flow = React.createClass({
 		var calculation = this.readyForCalculation(this.state.navButtons)
 		this.state.readyForCalculation = calculation
 		this.setState(this.state)
-	},
+	}
 
-	deleteDebt: function(index){
+	deleteDebt(index){
 		var debt = this.state.activeFinance.records[index]
 		var url = this.state.activeFinance.url + `/${debt.id}`
 		$.ajax({
@@ -81,9 +72,9 @@ var Flow = React.createClass({
 				console.log("That did not work")
 			}
 		})
-	},
+	}
 
-	handleDebtRemoval: function(index){
+	handleDebtRemoval(index){
 		var activeFinance = this.state.activeFinance
 		activeFinance.records.splice(index, 1);
 		if(activeFinance.records.length == 0){
@@ -92,9 +83,9 @@ var Flow = React.createClass({
 		var calculation = this.readyForCalculation(this.state.navButtons)
 		this.state.readyForCalculation = calculation
 		this.setState(this.state)
-	},
+	}
 
-	render: function(){
+	render(){
 		return(
 			<div id="flow">
 				<div className="header__block">
@@ -130,4 +121,14 @@ var Flow = React.createClass({
 			</div>
 		)
 	}
-})
+}
+
+Flow.PropTypes = {
+	navButtons: React.PropTypes.arrayOf(React.PropTypes.shape({
+		name: React.PropTypes.string.isRequired,
+		completed: React.PropTypes.bool.isRequred,
+		accessible: React.PropTypes.bool.isRequired,
+		active: React.PropTypes.bool.isRequired,
+		prompt:React.PropTypes.string.isRequired
+	}))
+}
