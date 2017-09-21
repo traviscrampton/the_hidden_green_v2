@@ -31,16 +31,13 @@ class Flow extends React.Component{
 	}
 
 	persistFinance(data){
+		debugger;
 		$.ajax({
 			url: this.state.activeFinance.url,
 			type: 'POST',
-			context: this,
 			data: data,
-			success: function(finance){
-				this.handleSuccess(finance)
-			}, error: function(){
-				console.log("There has been a grave mistake")
-			}
+			success: finance => this.handleSuccess(finance),
+			error: response =>  console.log("There has been a grave mistake")
 		})
 	}
 
@@ -66,21 +63,18 @@ class Flow extends React.Component{
 			type: "DELETE",
 			context: this,
 			data: debt,
-			success: function(response){
-				this.handleDebtRemoval(index)
-			}, error: function(response){
-				console.log("That did not work")
-			}
+			success: response => this.handleDebtRemoval(index),
+			error: response => console.log("That did not work")
 		})
 	}
 
 	handleDebtRemoval(index){
-		var activeFinance = this.state.activeFinance
+		let activeFinance = this.state.activeFinance
+		let calculation = this.readyForCalculation(this.state.navButtons)
 		activeFinance.records.splice(index, 1);
 		if(activeFinance.records.length == 0){
 			activeFinance.completed = false
 		}
-		var calculation = this.readyForCalculation(this.state.navButtons)
 		this.state.readyForCalculation = calculation
 		this.setState(this.state)
 	}
@@ -88,10 +82,9 @@ class Flow extends React.Component{
 	render(){
 		return(
 			<div id="flow">
-				<div className="header__block">
-					<div className="header__block--title">Let's get out of debt</div>
-					<div className="header__block--subtext">But first we need some basic finances</div>
-				</div>
+				<Header
+					bigText="Let's get out of debt"
+					subText="But first we need some basic finances" />
 				<div className="calculation__button">
 					{this.state.readyForCalculation ?
 						<form action="/months" method="POST">
@@ -100,7 +93,7 @@ class Flow extends React.Component{
 					}
 				</div>
 				<div className="navbutton__block">
-					{this.state.navButtons.map(function(button, index){
+					{this.state.navButtons.map((button, index) => {
 						return <NavButton
 							key={index}
 							name={button.name}
@@ -108,15 +101,15 @@ class Flow extends React.Component{
 							accessible={button.accessible}
 							active={this.state.activeFinance == button}
 							prompt={button.prompt}
-							buttonClick={function(){this.handleButtonClick(index)}.bind(this)}/>
-					}.bind(this))}
+							buttonClick={() => this.handleButtonClick(index)}/>
+					})}
 				</div>
 				<ActiveBox
 					completed={this.state.activeFinance.completed}
 					prompt={this.state.activeFinance.prompt}
 					record={this.state.activeFinance.records}
 					name={this.state.activeFinance.name}
-					persistFinance={this.persistFinance}
+					persistFinance={(data) => this.persistFinance(data)}
 					deleteDebt={this.deleteDebt} />
 			</div>
 		)
